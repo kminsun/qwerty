@@ -15,15 +15,11 @@ CONTRACT geteos: public contract {
         print(itr->balance);
     }
 
-    ACTION gettokeninfo(asset token) {
+    ACTION gettokeninfo(asset& token) {
         //print token symbol
         //print token precision
-        accounts mytoken("eosio.token"_n, user.value);
-        symbol sym = token.symbol;
-        auto itr = mytoken.require_find(sym.code().raw());
-
-        
-        print(itr->balance,);
+        print(token.symbol.code().to_string());
+        print(token.symbol.precision());
     }
 
     private:
