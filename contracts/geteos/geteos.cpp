@@ -15,6 +15,17 @@ CONTRACT geteos: public contract {
         print(itr->balance);
     }
 
+    ACTION gettokeninfo(asset token) {
+        //print token symbol
+        //print token precision
+        accounts mytoken("eosio.token"_n, user.value);
+        symbol sym = token.symbol;
+        auto itr = mytoken.require_find(sym.code().raw());
+
+        
+        print(itr->balance,);
+    }
+
     private:
         struct [[eosio::table]] account {
             asset    balance; //blaance사용해서잔액확인//
